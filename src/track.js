@@ -21,7 +21,7 @@ const getSlideClasses = spec => {
   slickCloned = index < 0 || index >= spec.slideCount;
   if (spec.centerMode) {
     centerOffset = Math.floor(spec.slidesToShow / 2);
-    slickCenter = (index - spec.currentSlide) % spec.slideCount === 0;
+    slickCenter = 0 <= (index - spec.currentSlide) % spec.slideCount <= spec.slidesToShow;
     if (
       index > spec.currentSlide - centerOffset - 1 &&
       index <= spec.currentSlide + centerOffset
