@@ -22,9 +22,18 @@ const getSlideClasses = spec => {
   if (spec.centerMode) {
     centerOffset = Math.floor(spec.slidesToShow / 2);
     slickCenter = 0 <= (index - spec.currentSlide) % spec.slideCount <= spec.slidesToShow;
+
+    let slideCenter = spec.currentSlide;
+    let nextSlideCenter = spec.currentSlide + spec.slideCount;
+    let prevSlideCenter = spec.currentSlide + spec.slideCount;
     if (
       index > spec.currentSlide - centerOffset - 1 &&
-      index <= spec.currentSlide + centerOffset
+      index <= spec.currentSlide + centerOffset &&
+      ((index >= slideCenter && index < slideCenter + spec.slidesToShow) ||
+        (index >= nextSlideCenter &&
+          index < nextSlideCenter + spec.slidesToShow) ||
+        (index >= prevSlideCenter &&
+          index < prevSlideCenter + spec.slidesToShow))
     ) {
       slickActive = true;
     }
