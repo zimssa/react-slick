@@ -32,12 +32,12 @@ h3 {
 }
 @media (min-width: 701px) {
   .content {
-    width: 80%;
+    width: 50%;
   }
 }
 @media (max-width: 700px) {
   .content {
-    width: 70%;
+    width: 50%;
   }
 }
 .slick-slide .image {
@@ -96,6 +96,7 @@ h3 {
   height: 180px;
 }
 .slick-arrow {
+  z-index: 1;
   background-color: grey;
 }
 .slick-arrow:hover {

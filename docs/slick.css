@@ -23,7 +23,7 @@
     position: relative;
 
     display: block;
-    overflow: hidden;
+    /* overflow: hidden; */
 
     margin: 0;
     padding: 0;
@@ -58,6 +58,13 @@
     margin-left: auto;
     margin-right: auto;
 }
+.slick-track .slick-slide{
+    opacity: 0.5;
+}
+.slick-track .slick-active{
+    opacity: 1;
+}
+
 .slick-track:before,
 .slick-track:after
 {

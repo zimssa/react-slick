@@ -21,7 +21,8 @@ const getSlideClasses = spec => {
   slickCloned = index < 0 || index >= spec.slideCount;
   if (spec.centerMode) {
     centerOffset = Math.floor(spec.slidesToShow / 2);
-    slickCenter = 0 <= (index - spec.currentSlide) % spec.slideCount <= spec.slidesToShow;
+    slickCenter =
+      0 <= (index - spec.currentSlide) % spec.slideCount <= spec.slidesToShow;
 
     let slideCenter = spec.currentSlide;
     let nextSlideCenter = spec.currentSlide + spec.slideCount;
@@ -39,8 +40,12 @@ const getSlideClasses = spec => {
     }
   } else {
     slickActive =
-      spec.currentSlide <= index &&
-      index < spec.currentSlide + spec.slidesToShow;
+      (spec.currentSlide <= index &&
+        index < spec.currentSlide + spec.slidesToShow) ||
+      (spec.currentSlide === spec.slideCount - 1 &&
+        (index === -1 || index === 0)) || // < 첫 아이템에서 왼쪽으로 갈때
+      (spec.currentSlide === 0 &&
+        (index === spec.slideCount || index === spec.slideCount + 1)); // < 마지막 아이템에서 오른쪽으로 갈때
   }
 
   let focusedSlide;
@@ -52,6 +57,7 @@ const getSlideClasses = spec => {
     focusedSlide = spec.targetSlide;
   }
   let slickCurrent = index === focusedSlide;
+
   return {
     "slick-slide": true,
     "slick-active": slickActive,
